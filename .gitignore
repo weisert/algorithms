@@ -13,3 +13,4 @@ CTestTestfile.cmake
 *.vcxproj.*
 Debug
 Release
+*.VC.*

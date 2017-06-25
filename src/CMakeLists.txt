@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 2.6.2)
 
 project(algorithms)
 
+set (CMAKE_CXX_STANDARD 14)
+
 add_subdirectory(third_party/gtest)
 
 include_directories(.)

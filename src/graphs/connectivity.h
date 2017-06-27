@@ -10,10 +10,10 @@ namespace graphs {
 
 class Connectivity {
  public:
-  explicit Connectivity(size_t size) {
+  explicit Connectivity(int size) {
     assert(size > 1);
     id_.reserve(size);
-    for (int i = 0; i < static_cast<int>(size); ++i)
+    for (int i = 0; i < size; ++i)
       id_.push_back(i);
   }
 
@@ -31,7 +31,7 @@ class Connectivity {
     id_[u_root] = v_root;
   }
 
-  size_t Size() const {
+  int Size() const {
     return id_.size();
   }
 

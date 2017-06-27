@@ -44,7 +44,7 @@ TEST(Connectivity, Union) {
     ASSERT_TRUE(conn2.Connected(i - 1, i));
   }
   for (int i = 0; i < conn2.Size() - 1; ++i) {
-    ASSERT_TRUE(conn2.Connected(i, static_cast<int>(conn2.Size()) - 1));
+    ASSERT_TRUE(conn2.Connected(i, conn2.Size() - 1));
   }
 }
 

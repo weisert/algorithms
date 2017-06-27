@@ -1,10 +1,48 @@
-image:
-- Visual Studio 2015
-
 environment:
   matrix:
+    # 32 bits
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      VSENV_SCRIPT: C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat
+      BITS: 32
+      MSVC_PLATFORM: x86
+      SHORT_MSVC_PLATFORM: x86
+      COMPILER: Visual Studio 14 2015 
+      VSINSTALL: "Microsoft Visual Studio 14.0\\VC"
+      MSVC_VERSION: msvc-14.0
+
+    # 64 bits
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      BITS: 64
+      MSVC_PLATFORM: amd64
+      SHORT_MSVC_PLATFORM: x64
+      COMPILER: Visual Studio 14 2015 Win64
+      VSINSTALL: "\\Microsoft Visual Studio 14.0\\VC"
+      MSVC_VERSION: msvc-14.0
+
+    # 32 bits
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      BITS: 32
+      MSVC_PLATFORM: x86
+      SHORT_MSVC_PLATFORM: x86
+      COMPILER: Visual Studio 15 2017 
+      VSINSTALL: "Microsoft Visual Studio\\2017\\Community\\VC\\Auxiliary\\Build"
+      MSVC_VERSION: msvc-14.1
+
+    # 64 bits
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      BITS: 64
+      MSVC_PLATFORM: amd64
+      SHORT_MSVC_PLATFORM: x64
+      COMPILER: Visual Studio 15 2017 Win64
+      VSINSTALL: "Microsoft Visual Studio\\2017\\Community\\VC\\Auxiliary\\Build"
+      MSVC_VERSION: msvc-14.1
+   
+matrix:
+  allow_failures:
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+
+init:
+  - cmake --version
+  - C:\"Program Files (x86)"\"%VSINSTALL%"\vcvarsall.bat %MSVC_PLATFORM%
 
 build:
   verbosity: detailed
@@ -37,7 +75,7 @@ install:
   - cmake --version
 
 before_build:
-  - call "%VSENV_SCRIPT%" amd64
+  - C:\"Program Files (x86)"\"%VSINSTALL%"\vcvarsall.bat %MSVC_PLATFORM%
   - cd C:\projects\algorithms\src
 
 build_script:

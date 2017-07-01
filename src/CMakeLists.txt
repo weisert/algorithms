@@ -17,8 +17,9 @@ set( sources
 )
 
 set( test_sources
-  strings/kmp_unittest.cc
   graphs/connectivity_unittest.cc
+  math/gcd_unittest.cc
+  strings/kmp_unittest.cc
 )
 
 add_executable(unit_tests ${sources} ${test_sources})

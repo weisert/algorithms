@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
-namespace strings{
+namespace strings {
 
 class KMP {
  public:

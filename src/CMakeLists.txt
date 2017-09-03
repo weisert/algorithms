@@ -20,6 +20,7 @@ set( test_sources
   graphs/connectivity_unittest.cc
   math/gcd_unittest.cc
   strings/kmp_unittest.cc
+  strings/aho_corasick_unittest.cc
 )
 
 add_executable(unit_tests ${sources} ${test_sources})
